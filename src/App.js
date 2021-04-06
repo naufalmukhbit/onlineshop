@@ -9,7 +9,8 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
-        <p>
+        
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <span>
@@ -49,7 +50,7 @@ function App() {
           >
             React Redux
           </a>
-        </span>
+        </span> */}
       </header>
     </div>
   );
