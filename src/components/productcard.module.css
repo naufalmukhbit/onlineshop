@@ -5,6 +5,15 @@
     max-height: 100%;
     overflow: hidden;
 }
+.cardListBg{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: .5rem;
+    max-height: 10rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
 .productImage {
     max-width: 100%;
 }
@@ -17,25 +26,32 @@
     margin-bottom: .5rem;
     overflow: hidden;
 }
+.price {
+    margin-bottom: 0;
+}
 .cartButton {
-    background-color: white;
-    color: black;
+    width: 100% !important;
+}
+.quantityButtonContainer {
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 100%;
-    padding: .5rem 0;
-    transition: .15s;
-    margin-top: .7rem;
+    overflow: hidden;
+    min-height: 2.5rem;
+    /* box-sizing: border-box; */
 }
-.cartButton:hover {
-    background-color: #007bff;
-    color: white;
-    border: 1px solid #007bff;
-    transition: .15s;
+.quantity {
+    text-align: center;
+    background-color: white !important;
+    /* height: 2.5rem; */
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    height: inherit !important;
 }
-.cartButton:active {
-    background-color: #0353a8;
-    color: white;
-    border: 1px solid #0353a8;
-    transition: .15s;
+.quantityButtons, .quantityButtons:hover, .quantityButtons:active {
+    border: none !important;
+    border-radius: 0 !important;
+    width: 2rem;
+    /* height: 2rem; */
 }

@@ -4,6 +4,9 @@
 .product-card {
     padding: 0 !important;
 }
+.flex-sm-column {
+    width: 100%;
+}
 
 .nav-link.active {
     color: white !important;
@@ -12,6 +15,10 @@
 .nav-link {
     color: black !important;
 }
-.navbar-menus {
-    float: right;
+.image-container {
+    text-align: center;
+    padding: 2rem 15rem 5rem;
+}
+.image-container img {
+    max-width: 100%;
 }

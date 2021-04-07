@@ -1,0 +1,20 @@
+.button {
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: .5rem 0;
+    transition: .15s;
+}
+.button:hover {
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    transition: .15s;
+}
+.button:active {
+    background-color: #0353a8;
+    border: 1px solid #0353a8;
+    color: white;
+    transition: .15s;
+}

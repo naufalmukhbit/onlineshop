@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import {
-    Navbar,
     Container,
     Row,
     Col,
+    Navbar,
     Nav
 } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+
+import { selectProducts } from './features/products/productSlice'
 import ProductCard from './components/productcard';
+import Header from './components/header';
+
 import './styles/Home.css';
-import { products } from './products/products';
+import logo from './assets/logo.png';
 
 function ProductView({products, category}) {
     if (category === "all") {
@@ -34,27 +39,29 @@ function ProductView({products, category}) {
 
 function Home() {
     const [category, setCategory] = useState("all");
+    const products = useSelector(selectProducts);
     const handleCategoryChange = (selectedCategory) => {
         setCategory(selectedCategory);
     }
     
     return (
         <Container>
-            <Navbar>
-                <Navbar.Brand>Online Shop</Navbar.Brand>
-                <div className="navbar-menus">
-                    <button>Cart</button>
-                    <button>Login</button>
-                </div>
-            </Navbar>
+            <Header />
+            <div className="image-container">
+                <img src={logo} alt="OnlineShop Logo"/>
+            </div>
             <Row>
                 <Col sm={3} className="category-pane">
-                    <Nav variant="pills" defaultActiveKey="all" className="flex-sm-column">
-                        <Nav.Link onSelect={() => handleCategoryChange('all')} eventKey="all">All</Nav.Link>
-                        <Nav.Link onSelect={() => handleCategoryChange('electronic')} eventKey="electronics">Electronics</Nav.Link>
-                        <Nav.Link onSelect={() => handleCategoryChange('fashion')} eventKey="fashion">Fashion</Nav.Link>
-                        <Nav.Link onSelect={() => handleCategoryChange('food')} eventKey="food">Food</Nav.Link>
-                    </Nav>
+                    <Navbar sticky="top">
+                        <Nav variant="pills" defaultActiveKey="all" className="flex-sm-column">
+                            <h6>Category</h6>
+                            <br />
+                            <Nav.Link onSelect={() => handleCategoryChange('all')} eventKey="all">All</Nav.Link>
+                            <Nav.Link onSelect={() => handleCategoryChange('electronic')} eventKey="electronics">Electronics</Nav.Link>
+                            <Nav.Link onSelect={() => handleCategoryChange('fashion')} eventKey="fashion">Fashion</Nav.Link>
+                            <Nav.Link onSelect={() => handleCategoryChange('food')} eventKey="food">Food</Nav.Link>
+                        </Nav>
+                    </Navbar>
                 </Col>
                 <Col sm={9}>
                     <Row>

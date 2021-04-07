@@ -1,0 +1,7 @@
+.total-pane {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    /* margin: .5rem; */
+    max-height: 100%;
+    overflow: hidden;
+}
