@@ -8,9 +8,9 @@ import {
 } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
-import { selectProducts } from './features/products/productSlice'
-import ProductCard from './components/productcard';
-import Header from './components/header';
+import { selectProducts } from '../features/products/productSlice'
+import ProductCard from '../components/productcard';
+import Header from '../components/header';
 
 import './styles/Home.css';
 import logo from './assets/logo.png';
