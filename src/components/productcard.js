@@ -35,15 +35,12 @@ export default function ProductCard({action, product, list}) {
                 }</p>
                 <h6 className={styles.productPrice}>{price}</h6>
             </div>
-            {/* Consists of 3 actions:
-            - Normal card (add to cart / quantity modifier)
-            - Cart (quantity modifier, item remover)
-            - Admin (item modifier, item remover) */}
             <CardButton
                 action={action}
                 inCart={inCart}
                 id={product.id}
                 addToCart={() => handleAddToCart(product)}
+                list={list ? "list" :""}
             />
         </div>
     )

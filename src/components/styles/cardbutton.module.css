@@ -1,5 +1,11 @@
 .actions {
-    padding: 1rem;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    padding: 3.5rem 1rem !important;
 }
 
 .cartButton {
@@ -11,6 +17,7 @@
     border-radius: 5px;
     overflow: hidden;
     min-height: 2.5rem;
+    margin-right: 1rem;
 }
 .quantity {
     text-align: center;

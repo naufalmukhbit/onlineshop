@@ -44,7 +44,7 @@ function QuantityButtons({ id }) {
 	);
 }
 
-export default function CardButton({ action, inCart, id, addToCart }) {
+export default function CardButton({ action, inCart, id, addToCart, list }) {
 	const dispatch = useDispatch();
 	const normalButton =
 		inCart(id) ? (
@@ -71,7 +71,7 @@ export default function CardButton({ action, inCart, id, addToCart }) {
 		/>
 	);
 	return (
-		<div className={styles.actions}>
+		<div className={`${styles.actions} ${list ? styles.list : ""}`}>
 			{action !== "admin" ? normalButton : ""}
 			{action === "admin" ? editButton : ""}
 			{action !== "normal" ? removeButton : ""}

@@ -28,10 +28,16 @@ export const productSlice = createSlice({
             state[action.payload.category].push({id: id, ...action.payload});
         },
         editProducts: (state,action) => {
-
+            // payload: object of product
+            state[action.payload.category].id = action.payload.id;
+            state[action.payload.category].name = action.payload.name;
+            state[action.payload.category].category = action.payload.category;
+            state[action.payload.category].price = action.payload.price;
         },
         removeProducts: (state,action) => {
             // payload: id of product
+            let category = categoryMap[action.payload.substring(0,2)];
+            state[category].splice(findItemIndex(state, action.payload), 1);
         }
     }
 })

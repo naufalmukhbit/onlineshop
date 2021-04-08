@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import Header from '../components/header'
-import { Container } from 'react-bootstrap'
+import Layout from '../components/layout'
+import { Container, Form } from 'react-bootstrap'
 import './styles/Login.css'
 import { accounts } from '../data/accounts'
 import { useDispatch } from 'react-redux'
 import { login, logout } from '../features/user/userSlice'
 import { Redirect } from 'react-router-dom'
+import Button from '../components/button'
 
 function LoginWindow({ reset, onSubmit }) {
     const emailFormat = /^\w+@\w+\.\w{2,}$/;
@@ -28,11 +29,6 @@ function LoginWindow({ reset, onSubmit }) {
     }
 
     const handleChange = (event) => {
-        // if (reset) {
-        //     event.target.value = ""
-        //     reset = false
-        // }
-
         if (event.target.name === "email") handleEmailValidation(event)
         else handlePasswordChange(event)
     }
@@ -49,11 +45,14 @@ function LoginWindow({ reset, onSubmit }) {
     }
 
     return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <input name="email" type="text" onChange={handleChange}/>
-            <input name="password" type="password" onChange={handleChange}/>
-            <input type="submit" value="Login" />
-        </form>
+        <div className="login-window">
+            <h4>Login to OnlineShop</h4>
+            <Form onSubmit={handleSubmit}>
+                <Form.Control name="email" type="email" placeholder="E-mail" onChange={handleChange}/>
+                <Form.Control name="password" type="password" placeholder="Password"  onChange={handleChange}/>
+                <Button value="Login" type="submit" className="login-button"/>
+            </Form>
+        </div>
     )
 }
 
@@ -77,11 +76,12 @@ function Login({ location }) {
     }
     // access message = location.state.message
     return (
-        <Container>
-            <Header />
-            <LoginWindow onSubmit={handleLogin}/>
+        <Layout>
+            <div className="loginWindow-container">
+                <LoginWindow onSubmit={handleLogin}/>
+            </div>
             {success ? (admin ? <Redirect to="/admin" /> : <Redirect to="/" />) : ""}
-        </Container>
+        </Layout>
     )
 }
 

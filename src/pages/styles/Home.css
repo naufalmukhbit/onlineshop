@@ -1,6 +1,9 @@
 .category-pane {
     padding: 1rem;
 }
+.sticky-top {
+    top:5rem;
+}
 .product-card {
     padding: 0 !important;
 }

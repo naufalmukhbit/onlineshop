@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import {
-    Container,
     Row,
     Col,
     Navbar,
     Nav
 } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faThLarge, faThList } from "@fortawesome/free-solid-svg-icons";
 
 import { selectProducts } from '../features/products/productSlice'
 import ProductCard from '../components/productcard';
-import Header from '../components/header';
+import Button from '../components/button';
+import Layout from '../components/layout'
 
 import './styles/Home.css';
-import logo from './assets/logo.png';
+import logo from '../assets/logo.png';
 
 function ProductView({products, category}) {
     if (category === "all") {
@@ -45,8 +47,7 @@ function Home() {
     }
     
     return (
-        <Container>
-            <Header />
+        <Layout>
             <div className="image-container">
                 <img src={logo} alt="OnlineShop Logo"/>
             </div>
@@ -64,12 +65,14 @@ function Home() {
                     </Navbar>
                 </Col>
                 <Col sm={9}>
+                    {/* <Button value={<FontAwesomeIcon icon={faThLarge} />} active/>
+                    <Button value={<FontAwesomeIcon icon={faThList} />}/> */}
                     <Row>
                         <ProductView products={products} category={category} />
                     </Row>
                 </Col>
             </Row>
-        </Container>
+        </Layout>
     )
 }
 

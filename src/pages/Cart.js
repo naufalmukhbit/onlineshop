@@ -1,73 +1,89 @@
-import Layout from '../components/layout'
+import Layout from "../components/layout";
+import { Container, Row, Col } from "react-bootstrap";
 import {
-    Container,
-    Row,
-    Col
-} from 'react-bootstrap';
-import {
-    selectCartContents,
-    selectTotalQuantity,
-    selectTotalPrice
-} from '../features/cart/cartSlice'
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+	selectCartContents,
+	selectTotalQuantity,
+	selectTotalPrice,
+} from "../features/cart/cartSlice";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import ProductCard from '../components/productcard'
-import './styles/Cart.css';
+import ProductCard from "../components/productcard";
+import "./styles/Cart.css";
 
-function CartSummary({product, quantity}) {
-    return (
-        <tr key={product.id}>
-            <td>{product.name}</td>
-            <td>{quantity}</td>
-        </tr>
-    )
+function CartSummary({ product, quantity }) {
+	return (
+		<tr key={product.id}>
+			<td className="product-name">{product.name}</td>
+			<td className="quantity-column">{quantity}</td>
+		</tr>
+	);
 }
 
 function Cart() {
-    const contents = useSelector(selectCartContents);
-    const totalQuantity = useSelector(selectTotalQuantity);
-    const totalPrice = useSelector(selectTotalPrice);
+	const contents = useSelector(selectCartContents);
+	const totalQuantity = useSelector(selectTotalQuantity);
+	const totalPrice = new Intl.NumberFormat("id-ID", {
+		style: "currency",
+		currency: "IDR",
+	}).format(useSelector(selectTotalPrice));
 
-    const prodList = contents.map(item => (
-        <ProductCard action="cart" product={item.product} key={item.product.id} list/>
-    ))
-    const prodSummary = contents.map(item => (
-        <CartSummary product={item.product} quantity={item.quantity} />
-    ))
+	const prodList = contents.map((item) => (
+		<ProductCard
+			action="cart"
+			product={item.product}
+			key={item.product.id}
+			list
+		/>
+	));
+	const prodSummary = contents.map((item) => (
+		<CartSummary product={item.product} quantity={item.quantity} />
+	));
 
-    return (
-        <Layout>
-            <Link to="/home">
-                Back to home
-            </Link>
-            <h3>Cart</h3>
-            <Row>
-                <Col sm={8}>
-                    {prodList}
-                </Col>
-                <Col sm={4} className="total-pane">
-                    <table className="summary">
-                        <thead>
-                            <tr>
-                                <th>Items</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {prodSummary}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Total items</th>
-                                <th>{totalQuantity}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </Col>
-            </Row>
-        </Layout>
-    )
+	return (
+		<Layout>
+			<Row>
+				<Col sm={8}>
+					<h3>Cart</h3>
+					{prodList.length > 0 ? prodList : "Cart is empty!"}
+				</Col>
+				<Col sm={4} className="total-pane">
+					<div className="total-container">
+						<div className="summary-container">
+							<table className="summary">
+								<thead>
+									<tr>
+										<th>Items</th>
+										<th className="quantity-column">
+											Quantity
+										</th>
+									</tr>
+								</thead>
+								<tbody>{prodSummary}</tbody>
+							</table>
+						</div>
+
+						<table className="total">
+							<tbody>
+								<tr className="total-items">
+									<td>Total items</td>
+									<td className="quantity-column">
+										{totalQuantity}
+									</td>
+								</tr>
+								<tr>
+									<td>Total</td>
+									<td className="quantity-column total-price">
+										{totalPrice}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</Col>
+			</Row>
+		</Layout>
+	);
 }
 
-export default Cart
+export default Cart;

@@ -1,10 +1,48 @@
+.product-name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    max-width: 1rem;
+}
 .total-pane {
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    /* margin: .5rem; */
-    max-height: 100%;
-    overflow: hidden;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	min-height: 50vh;
+    max-height: 50vh;
+	overflow: hidden;
+	padding: 1rem 1.5rem !important;
+}
+.summary-container {
+    overflow-y:scroll;
+    height: 70%;
 }
 .summary {
+	font-size: 13px;
+    width: 100%;
+	
+    margin-bottom: 1rem;
+}
+.footer {
+	margin-top: 1rem;
+}
+.quantity-column {
+	width: 5rem;
+	text-align: right;
+}
+.total-container {
+    position: relative;
+    height: 100%;
+}
+.total {
+    position: absolute;
+    bottom: 0;
     font-size: 13px;
+    padding: .5rem;
+    width: 100%;
+}
+.total-items {
+    font-weight: bold;
+}
+.total-price {
+    font-size: 24px;
 }
