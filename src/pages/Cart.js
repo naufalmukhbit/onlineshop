@@ -1,4 +1,4 @@
-import Header from '../components/header'
+import Layout from '../components/layout'
 import {
     Container,
     Row,
@@ -6,7 +6,8 @@ import {
 } from 'react-bootstrap';
 import {
     selectCartContents,
-    selectTotalQuantity
+    selectTotalQuantity,
+    selectTotalPrice
 } from '../features/cart/cartSlice'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,18 +15,29 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../components/productcard'
 import './styles/Cart.css';
 
+function CartSummary({product, quantity}) {
+    return (
+        <tr key={product.id}>
+            <td>{product.name}</td>
+            <td>{quantity}</td>
+        </tr>
+    )
+}
+
 function Cart() {
     const contents = useSelector(selectCartContents);
     const totalQuantity = useSelector(selectTotalQuantity);
-    console.log(totalQuantity);
-    // const dispatch = useDispatch();
+    const totalPrice = useSelector(selectTotalPrice);
 
     const prodList = contents.map(item => (
-        <ProductCard product={item.product} type="list" key={item.product.id}/>
+        <ProductCard action="cart" product={item.product} key={item.product.id} list/>
     ))
+    const prodSummary = contents.map(item => (
+        <CartSummary product={item.product} quantity={item.quantity} />
+    ))
+
     return (
-        <Container>
-            <Header />
+        <Layout>
             <Link to="/home">
                 Back to home
             </Link>
@@ -35,10 +47,26 @@ function Cart() {
                     {prodList}
                 </Col>
                 <Col sm={4} className="total-pane">
-                    Total items = {totalQuantity}
+                    <table className="summary">
+                        <thead>
+                            <tr>
+                                <th>Items</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {prodSummary}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total items</th>
+                                <th>{totalQuantity}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </Col>
             </Row>
-        </Container>
+        </Layout>
     )
 }
 

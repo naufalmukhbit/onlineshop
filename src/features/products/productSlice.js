@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { electronic, fashion, food } from '../../products/products'
+import { electronic, fashion, food } from '../../data/products'
 
 const initialState = {
     electronic: electronic,

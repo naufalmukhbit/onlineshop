@@ -7,6 +7,7 @@ import {
 import Home from './Home';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
+import Admin from './pages/Admin'
 import './App.css';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <Login />
         </Route>
         <Route path="/admin">
-          <div>adminpage</div>
+          <Admin />
         </Route>
         <Route path="/cart">
           <Cart />

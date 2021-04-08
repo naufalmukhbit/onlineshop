@@ -20,7 +20,7 @@ function ProductView({products, category}) {
         return products.map(product =>
             (
                 <Col xs={6} sm={4} md={3} className="product-card" key={product.id}>
-                    <ProductCard product={product} />
+                    <ProductCard action="normal" product={product} />
                 </Col>
             ));
     } else {
@@ -28,7 +28,7 @@ function ProductView({products, category}) {
             if (product.category === category) {
                 return (
                     <Col xs={6} sm={4} md={3} className="product-card" key={product.id}>
-                        <ProductCard product={product} />
+                        <ProductCard action="normal" product={product} />
                     </Col>
                 )
             }
