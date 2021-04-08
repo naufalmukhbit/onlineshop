@@ -62,6 +62,9 @@ function LoginWindow({ reset, onSubmit }) {
 				/>
 				<Button value="Login" type="submit" className="login-button" />
 			</Form>
+            <br />
+            <br />
+            <p className="account-link">View the <a href="https://github.com/naufalmukhbit/onlineshop">repo</a> to see accounts list.</p>
 		</div>
 	);
 }

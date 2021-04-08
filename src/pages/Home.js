@@ -59,8 +59,10 @@ function Home() {
 							defaultActiveKey="all"
 							className="flex-sm-column"
 						>
-							<h6 className="category-title">Category</h6>
-							<br />
+							<Nav.Link disabled>
+								<strong>Category</strong>
+							</Nav.Link>
+                            <br />
 							<Nav.Link
 								onSelect={() => handleCategoryChange("all")}
 								eventKey="all"
