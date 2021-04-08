@@ -1,47 +1,49 @@
-import styles from './styles/productcard.module.css';
-import imagePlaceholder from '../assets/product_placeholder.png';
+import styles from "./styles/productcard.module.css";
+import imagePlaceholder from "../assets/product_placeholder.png";
 
-import {
-    addItem,
-    selectItemInCart
-} from '../features/cart/cartSlice'
-import { useSelector, useDispatch } from 'react-redux';
+import { addItem, selectItemInCart } from "../features/cart/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-import CardButton from'./cardbutton'
+import CardButton from "./cardbutton";
 
-export default function ProductCard({action, product, list}) {
-    const price = new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR'}).format(product.price);
-    const inCart = useSelector(selectItemInCart);
-    const dispatch = useDispatch();
+export default function ProductCard({ action, product, list }) {
+	const price = new Intl.NumberFormat("id-ID", {
+		style: "currency",
+		currency: "IDR",
+	}).format(product.price);
+	const inCart = useSelector(selectItemInCart);
+	const dispatch = useDispatch();
 
-    const handleImageNotFound = (event) => {
-        event.target.src = imagePlaceholder;
-    }
-    const handleAddToCart = (product) => {
-        dispatch(addItem(product))
-    }
+	const handleImageNotFound = (event) => {
+		event.target.src = imagePlaceholder;
+	};
+	const handleAddToCart = (product) => {
+		dispatch(addItem(product));
+	};
 
-    return (
-        <div className={`${styles.cardBg} ${list ? styles.list : ""}`}>
-            <img
-                src={`../images/${product.category}/${product.id}.jpg`}
-                className={styles.productImage}
-                alt={product.name}
-                onError={handleImageNotFound}
-            />
-            <div className={styles.productDetail}>
-                <p className={styles.productName}>{
-                    product.name.length > 50 ? product.name.substring(0,50) + '...' : product.name
-                }</p>
-                <h6 className={styles.productPrice}>{price}</h6>
-            </div>
-            <CardButton
-                action={action}
-                inCart={inCart}
-                id={product.id}
-                addToCart={() => handleAddToCart(product)}
-                list={list ? "list" :""}
-            />
-        </div>
-    )
+	return (
+		<div className={`${styles.cardBg} ${list ? styles.list : ""}`}>
+			<img
+				src={`../images/${product.category}/${product.id}.jpg`}
+				className={styles.productImage}
+				alt={product.name}
+				onError={handleImageNotFound}
+			/>
+			<div className={styles.productDetail}>
+				<p className={styles.productName}>
+					{product.name.length > 50
+						? product.name.substring(0, 50) + "..."
+						: product.name}
+				</p>
+				<h6 className={styles.productPrice}>{price}</h6>
+			</div>
+			<CardButton
+				action={action}
+				inCart={inCart}
+				id={product.id}
+				addToCart={() => handleAddToCart(product)}
+				list={list ? "list" : ""}
+			/>
+		</div>
+	);
 }

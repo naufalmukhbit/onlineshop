@@ -1,32 +1,44 @@
 .cardBg {
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    margin: 0 .5rem 1rem;
-    max-height: 100%;
-    overflow: hidden;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	margin: 0 0.5rem 1rem;
+	max-height: 100%;
+	overflow: hidden;
 }
 .cardBg.list {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 .productImage {
-    width: 100%;
+	width: 100%;
 }
 .list > .productImage {
-    max-width: 10rem;
-    width: auto;
+	max-width: 10rem;
+	width: auto;
 }
 .productDetail {
-    padding: 1rem;
-    width: 100%;
+	padding: 1rem;
+	width: 100%;
 }
 .productName {
-    font-size: 13px;
-    height: 3em;
-    margin-bottom: .5rem;
-    overflow: hidden;
+	font-size: 13px;
+	height: 3em;
+	margin-bottom: 0.5rem;
+	overflow: hidden;
 }
 .productPrice {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
-
+@media only screen and (max-width: 992px) {
+	.productPrice {
+		font-size: 12px !important;
+	}
+	.cardBg.list {
+		max-height: 50%;
+	}
+	.list > .productImage {
+		max-width: 5rem;
+		max-height: 5rem;
+		width: auto;
+	}
+}

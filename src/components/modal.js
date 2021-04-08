@@ -1,34 +1,43 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
-import Button from './button'
+import Button from "./button";
 
-function ProductForm({ product={name:'', category:'', price:0} }) {
+function ProductForm({ product }) {
+	if (!product) {
+		product = { name: "", category: "", price: 0 };
+	}
 	const [name, setName] = useState(product.name);
 	const [category, setCategory] = useState(product.category);
 	const [price, setPrice] = useState(product.price);
 
 	const handleNameChange = (event) => {
 		setName(event.target.value);
-	} 
+	};
 
 	const handleCategoryChange = (event) => {
-		setCategory(event.target.value)
-	}
+		setCategory(event.target.value);
+	};
 
 	const handlePriceChange = (event) => {
-		setPrice(event.target.value.parseInt())
-	}
+		setPrice(event.target.value.parseInt());
+	};
 
 	return (
 		<Form>
 			<Form.Group controlId="productName">
 				<Form.Label>Name</Form.Label>
-				<Form.Control type="text" value={product.name} onChange={handleNameChange}/>
+				<Form.Control
+					type="text"
+					value={product.name}
+					onChange={handleNameChange}
+				/>
 			</Form.Group>
 			<Form.Group controlId="productCategory">
 				<Form.Label>Category</Form.Label>
 				<Form.Control as="select" onChange={handleCategoryChange}>
-					<option disabled selected>--- Select Category ---</option>
+					<option disabled selected>
+						--- Select Category ---
+					</option>
 					<option value="electronic">Electronic</option>
 					<option value="fashion">Fashion</option>
 					<option value="food">Food</option>
@@ -36,16 +45,18 @@ function ProductForm({ product={name:'', category:'', price:0} }) {
 			</Form.Group>
 			<Form.Group controlId="productPrice">
 				<Form.Label>Price</Form.Label>
-				<Form.Control type="text" value={product.price} onChange={handlePriceChange} />
+				<Form.Control
+					type="text"
+					value={product.price}
+					onChange={handlePriceChange}
+				/>
 			</Form.Group>
 		</Form>
 	);
 }
 
-export default function ProductModal({ product=null, edit, show, toggle }) {
-	const handleAdd = () => {
-		
-	}
+export default function ProductModal({ product, edit, show, toggle }) {
+	const handleAdd = () => {};
 	return (
 		<Modal show={show} onHide={toggle}>
 			<Modal.Header closeButton>
@@ -59,8 +70,8 @@ export default function ProductModal({ product=null, edit, show, toggle }) {
 				<ProductForm product={product} />
 			</Modal.Body>
 			<Modal.Footer>
-				<Button value="Cancel" onClick={toggle}/>
-                <Button value={edit ? "Save" : "Add"} onClick={toggle}/>
+				<Button value="Cancel" onClick={toggle} />
+				<Button value={edit ? "Save" : "Add"} onClick={toggle} />
 			</Modal.Footer>
 		</Modal>
 	);

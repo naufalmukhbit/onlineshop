@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -16,10 +16,10 @@ export default function Header() {
 	const loggedIn = useSelector(selectLoggedIn);
 	const dispatch = useDispatch();
 	const handleLogout = () => {
-		dispatch(logout())
-		alert("Logout successful")
-		setLogoutStatus(true)
-	}
+		dispatch(logout());
+		alert("Logout successful");
+		setLogoutStatus(true);
+	};
 	return (
 		<Navbar fixed="top" className={styles.main}>
 			<Container>

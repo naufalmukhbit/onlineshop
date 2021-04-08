@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import {
 	removeItem,
@@ -5,12 +6,18 @@ import {
 	decreaseQuantity,
 	selectItemQuantity,
 } from "../features/cart/cartSlice";
+import {
+	editProducts,
+	removeProducts,
+	selectProductDetail,
+} from "../features/products/productSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles/cardbutton.module.css";
 import Button from "./button";
+import ProductModal from "./modal";
 
 function QuantityButtons({ id }) {
 	const quantity = useSelector(selectItemQuantity);
@@ -45,29 +52,39 @@ function QuantityButtons({ id }) {
 }
 
 export default function CardButton({ action, inCart, id, addToCart, list }) {
+	const [show, setShow] = useState(false);
 	const dispatch = useDispatch();
-	const normalButton =
-		inCart(id) ? (
-			<QuantityButtons id={id} />
-		) : (
-			<Button
-				value="Add to Cart"
-				className={styles.cartButton}
-				onClick={addToCart}
-			/>
-		);
+	// const product = useSelector(selectProductDetail(id));
+
+	// const handleToggle = () => {
+	// 	setShow(!show)
+	// }
+
+	const normalButton = inCart(id) ? (
+		<QuantityButtons id={id} />
+	) : (
+		<Button
+			value="Add to Cart"
+			className={styles.cartButton}
+			onClick={addToCart}
+		/>
+	);
 	const editButton = (
 		<Button
 			value={<FontAwesomeIcon icon={faEdit} />}
 			className={styles.quantityButtons}
-			onClick={() => dispatch(removeItem(id))}
+			onClick={() => dispatch(editProducts(id))}
 		/>
 	);
 	const removeButton = (
 		<Button
 			value={<FontAwesomeIcon icon={faTrash} />}
 			className={styles.quantityButtons}
-			onClick={() => dispatch(removeItem(id))}
+			onClick={
+				action === "admin"
+					? () => dispatch(removeProducts(id))
+					: () => dispatch(removeItem(id))
+			}
 		/>
 	);
 	return (
@@ -75,6 +92,7 @@ export default function CardButton({ action, inCart, id, addToCart, list }) {
 			{action !== "admin" ? normalButton : ""}
 			{action === "admin" ? editButton : ""}
 			{action !== "normal" ? removeButton : ""}
+			{/* <ProductModal show={show} toggle={handleToggle} product={product}/> */}
 		</div>
 	);
 }

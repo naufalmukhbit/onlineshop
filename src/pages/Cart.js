@@ -14,8 +14,12 @@ import "./styles/Cart.css";
 function CartSummary({ product, quantity }) {
 	return (
 		<tr key={product.id}>
-			<td className="product-name">{product.name}</td>
-			<td className="quantity-column">{quantity}</td>
+			<td className="product-name" key={`name${product.id}`}>
+				{product.name}
+			</td>
+			<td className="quantity-column" key={`qty${product.id}`}>
+				{quantity}
+			</td>
 		</tr>
 	);
 }
@@ -65,15 +69,21 @@ function Cart() {
 
 						<table className="total">
 							<tbody>
-								<tr className="total-items">
-									<td>Total items</td>
-									<td className="quantity-column">
+								<tr className="total-items" key="tq-row">
+									<td key="tq-title">Total items</td>
+									<td
+										className="quantity-column"
+										key="tq-content"
+									>
 										{totalQuantity}
 									</td>
 								</tr>
-								<tr>
-									<td>Total</td>
-									<td className="quantity-column total-price">
+								<tr key="tp-row">
+									<td key="tp-title">Total</td>
+									<td
+										className="quantity-column total-price"
+										key="tp-content"
+									>
 										{totalPrice}
 									</td>
 								</tr>

@@ -1,31 +1,31 @@
 .main {
-    background-color: black;
+	background-color: black;
 }
 
 .headerBrand {
-    height: 2rem;
+	height: 2rem;
 }
 .headerLogo {
-    vertical-align: top;
-    margin: auto;
-    height: 100%;
-    width: auto;
-    filter: invert(100%);
+	vertical-align: top;
+	margin: auto;
+	height: 100%;
+	width: auto;
+	filter: invert(100%);
 }
 .headerMenu {
-    margin: .5rem 0;
-    margin-left: auto !important;
+	margin: 0.5rem 0;
+	margin-left: auto !important;
 }
 .cartButton {
-    color: white;
-    margin: 0 2rem;
-    font-size: 18px;
-    transition: .15s;
+	color: white;
+	margin: 0 2rem;
+	font-size: 18px;
+	transition: 0.15s;
 }
 .cartButton:hover {
-    color: gray;
-    transition: .15s;
+	color: gray;
+	transition: 0.15s;
 }
 .loginButton {
-    padding: .25rem .5rem;
+	padding: 0.25rem 0.5rem;
 }
