@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Row, Col, Navbar, Nav } from "react-bootstrap";
 import { useSelector } from "react-redux";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faThLarge, faThList } from "@fortawesome/free-solid-svg-icons";
 
 import { selectProducts } from "../features/products/productSlice";
 import ProductCard from "../components/productcard";
-import Button from "../components/button";
 import Layout from "../components/layout";
 
 import "./styles/Home.css";
 import logo from "../assets/logo.png";
+
+// TODO make grid and list menu option
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faThLarge, faThList } from "@fortawesome/free-solid-svg-icons";
+// import Button from "../components/button";
 
 function ProductView({ products, category }) {
 	if (category === "all") {
@@ -62,7 +64,7 @@ function Home() {
 							<Nav.Link disabled>
 								<strong>Category</strong>
 							</Nav.Link>
-                            <br />
+							<br />
 							<Nav.Link
 								onSelect={() => handleCategoryChange("all")}
 								eventKey="all"

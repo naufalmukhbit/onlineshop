@@ -7,7 +7,6 @@ import {
 	selectItemQuantity,
 } from "../features/cart/cartSlice";
 import {
-	editProducts,
 	removeProducts,
 	selectProductDetail,
 } from "../features/products/productSlice";
@@ -54,11 +53,11 @@ function QuantityButtons({ id }) {
 export default function CardButton({ action, inCart, id, addToCart, list }) {
 	const [show, setShow] = useState(false);
 	const dispatch = useDispatch();
-	// const product = useSelector(selectProductDetail(id));
+	const product = useSelector(selectProductDetail);
 
-	// const handleToggle = () => {
-	// 	setShow(!show)
-	// }
+	const handleToggle = () => {
+		setShow(!show);
+	};
 
 	const normalButton = inCart(id) ? (
 		<QuantityButtons id={id} />
@@ -73,7 +72,7 @@ export default function CardButton({ action, inCart, id, addToCart, list }) {
 		<Button
 			value={<FontAwesomeIcon icon={faEdit} />}
 			className={styles.quantityButtons}
-			onClick={() => dispatch(editProducts(id))}
+			onClick={handleToggle}
 		/>
 	);
 	const removeButton = (
@@ -92,7 +91,12 @@ export default function CardButton({ action, inCart, id, addToCart, list }) {
 			{action !== "admin" ? normalButton : ""}
 			{action === "admin" ? editButton : ""}
 			{action !== "normal" ? removeButton : ""}
-			{/* <ProductModal show={show} toggle={handleToggle} product={product}/> */}
+			<ProductModal
+				product={product(id)}
+				show={show}
+				toggle={handleToggle}
+				edit
+			/>
 		</div>
 	);
 }

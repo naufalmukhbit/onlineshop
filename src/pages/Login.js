@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Layout from "../components/layout";
-import { Container, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "./styles/Login.css";
 import { accounts } from "../data/accounts";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../features/user/userSlice";
+import { login } from "../features/user/userSlice";
 import { Redirect } from "react-router-dom";
 import Button from "../components/button";
 

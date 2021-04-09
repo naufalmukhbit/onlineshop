@@ -1,12 +1,11 @@
 import Layout from "../components/layout";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import {
 	selectCartContents,
 	selectTotalQuantity,
 	selectTotalPrice,
 } from "../features/cart/cartSlice";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import ProductCard from "../components/productcard";
 import "./styles/Cart.css";

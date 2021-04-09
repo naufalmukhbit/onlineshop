@@ -26,7 +26,7 @@ It correctly bundles React in production mode and optimizes the build for the be
  - Login page with capability to login as guest (normal user) or admin
 
 ## TODO
- - Add product CRUD for admin
+ - Fix edit product ID and category for admin
  - Sort products by date and price
  - Grid view and list view toggle at Home
 
